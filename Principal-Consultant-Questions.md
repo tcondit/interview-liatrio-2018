@@ -21,18 +21,46 @@
     If you expect they'll go longer than that, I'm willing to work with you. If
     you decide to go forward, and want to meet onsite, that shouldn't be a
     problem either. We should both have a pretty good idea by then if it's a
-    good match. 
+    good match.
 
 4. Tell us how you have been involved in end to end software delivery that
    includes CI/CD, test automation, IaaC, and Cloud
 
-    TODO
+    I worked as an individual contributor build engineer for seven years,
+    starting at Microsoft then on to Envision Telephony, plus the first part of
+    my time at Capital One. Since then my roles have been more "full pipeline",
+    adding more deployments with Chef and AnthillPro (not on my resume; I don't
+    want to use it again but am happy to talk about it ;)). My involvement with
+    test automation is tangential. I've worked with functional test and
+    performance test teams to integrate "their stuff" into "our stuff". Same
+    goes for unit tests, although we've been doing that for longer.
+
+    As for IaC and cloud, I've been working with AWS for four years or so, have
+    one certification (Developer Associate) and am working on a second
+    (Solutions Architect Associate). I've mentioned elsewhere in here that I've
+    been using Ansible for a while (Terraform and Fabric too). I like it as a
+    tool, and being a fan of Linux and remote management via SSH[1], also like
+    how it does what it does. At the same time, "serverless" is carving out a
+    niche and Docker with sane container orchestration may be a huge boon.
+
+    People are doing interesting stuff with Docker and FaaS like Lambda, but I
+    don't have much visibility into enterprise adoption. We use Docker Compose
+    here for some of our developer environments, and I use Docker via Jenkins
+    and Bash to spin up containers for unit testing in our CI/CD, but it
+    doesn't make it "up the stack" into our test, performance or production
+    environments. We also use Lambda for some ETL work, and where it's a pretty
+    good fit.
+
+    [^1] I'd love to evolve to truly immutable infrastructure, but at the
+         moment consider it more an ideal than a practical reality for many
+         teams.
 
 5. Quickly define your familiarity with the following tools including when was
    the last time you were actually hands on with any of them:
 
     * Jenkins, Maven, Gulp or Grunt, Selenium, Cucumber, Chef or Puppet or
-Ansible, Vagrant or Virtualbox, Nexus or Artifactory, AWS or Google or Azure
+      Ansible, Vagrant or Virtualbox, Nexus or Artifactory, AWS or Google or
+      Azure
 
     * Jenkins: most recently used it to set up automated deployments in my
       current role; last used a few weeks ago
@@ -56,41 +84,43 @@ Ansible, Vagrant or Virtualbox, Nexus or Artifactory, AWS or Google or Azure
     * Vagrant or VirtualBox: I've used both sometime this year; VirtualBox is
       currently running on my work laptop as a host environment for minikube
       (kubernetes)
+
     * Nexus or Artifactory: my team maintained an Artifactory instance for
       local deployments. We also used a shared (corporate) Nexus instance; last
       used close to two years ago for both (at Capital One)
+
     * AWS: very familiar with a dozen or so services; use it every day; Google
       Cloud Platform or Azure: never for pay
 
 6. Please define what you believe to be DevOps and what a DevOps transformation
    at a customer would look like.
 
-    Great question. I've started to answer it about eleven times already. My
-    current answer (but there are many others) is that DevOps is about putting
-    responsibility where it belongs.
+    DEFINE DEVOPS
 
-    I've always felt that developers like to change things all the time, while
-    operations folks like to prevent things from changing. That imbalance used
-    to look to me like the people with more information and less "skin in the
-    game" were happy to roll out new changes then throw them over the fence,
-    along with a partial description of what it is, how it works, and how to
-    deploy it into a production environment. The operation folks took on the
-    risk--if something broke, they'd be on the hook to fix the issue, often
-    without enough background to do their jobs effectively. (That's a concise
-    description, but it lacks nuance. For the sake of this answer, I hope it's
-    enough.)
+    Great questions. I've started to answer it about eleven times already. My
+    current answer (but there are others) is that DevOps is about putting
+    responsibility where it belongs, and to a lesser degree, managing perceived
+    risk.
 
-    A better outcome (for some definition of better) would have the developers
-    deploying to whatever environment they have access to, possibly even
-    production. But that's just the tip of the spear: developers won't suddenly
-    have the skills, experience or confidence--or let's face it, the
+    Broadly, I've always felt that developers like to change things all the
+    time, while operations folks like to prevent things from changing. That
+    imbalance used to look to me like the people with more information and less
+    "skin in the game" were happy to roll out new changes then throw them over
+    the fence, along with a partial description of what it is, how it works,
+    and how to deploy it into a production environment. The operation folks
+    took on the risk. If something broke, they'd be on the hook to fix the
+    issue, often without enough background to do their jobs effectively.
+    (That's a concise description, but it lacks nuance. For the sake of this
+    answer, I hope it's enough.)
+
+    A better outcome (for some reasonable definition of better) would have the
+    developers deploying to whatever environment they have access to, possibly
+    even production. But that's just the tip of the spear: developers won't
+    suddenly have the skills, experience or confidence--or let's face it, the
     interest!--to deploy to production. Getting there is a process, and DevOps
-    works best when leading by example.
-
-    A customer's DevOps transformation means developers now maintain their
-    creations throughout the full life cycle, including deployments. At the
-    same time, the operations staff need to learn to create dynamic
-    environments for the developers to deploy to.
+    works best when leading by example. In other words, when characterizing
+    DevOps, even just on the topic of cultural transformation, there's a lot
+    more to it.
 
     In addition to ideation, design, implementation, pre-release testing, etc.,
     developers are now starting to take responsibility for making sure it runs
@@ -101,81 +131,135 @@ Ansible, Vagrant or Virtualbox, Nexus or Artifactory, AWS or Google or Azure
     their skill sets, and the team benefits as a result.
 
     The operations folks, on the other hand, have to become part-time
-    developers as well. Until now, they could follow a playbook swapping in the
-    specific configuration changes needed for a given release. But now they
-    need to learn to write infrastructure as code, using whatever tools the
-    team chooses. They may be nervous or feel lost. That's okay; they have a
-    lot to learn. On some teams, the operations folks may have on-premises
-    hardware, or other "pets". Over time, they'll be better served by 
+    developers. Until now, they could follow manual steps from a runbook,
+    swapping in the specific configuration changes needed for a given release.
+    But now they need to learn to write infrastructure as code, using whatever
+    tools the team chooses. They may be excited! Or they may be nervous, lost
+    or discouraged. That's okay; they have a lot to learn. But if they were
+    hired for their capacity to learn, rather than for some specific set of
+    skills they've already learned, they'll be fine. On some teams, the
+    operations folks may have on-premises hardware, or other "pets". Over time,
+    they'll be better served by moving to more dynamic environments, where
+    resources can be provisioned on demand.
 
-    Over time, if things go well, the operations folks will move away from 
+    So developers will have to take more responsibility for managing their
+    applications across the full life cycle. And operations folks will have to
+    take more responsibility for providing and maintaining environments into
+    which to deploy and run those applications. And both will have share their
+    sometimes siloed knowledge with each other to help the team succeed.
 
-    the development teams are
-    organized vertically, rather than horizontally
+    I've not mentioned perceived risk, but it's a big one. Virtual machines,
+    then Git, now hosted cloud environments potentially lower to virtually nil
+    the risk associated with making changes. Anyone can spin up an ephemeral
+    EC2 instance and associated machinery (VPC, internet gateway, security
+    groups, EBS, etc.) and have a live environment in minutes. With automation
+    like CloudFormation or Terraform, they hardly even need to know how it was
+    created. When they're done with it, just delete the entire stack! This is a
+    wonderful technical achievement, but I'm more interested in the way it
+    changes peoples' relationships to their compute environments. The "pets"
+    are gone, and the "cattle" are slowly taking their place. No risk, no loss.
+    Repeat as often as necessary, and please don't think you need to keep some
+    polluted old machine hanging around because "that's how we've always done
+    it". Please. No.
 
-    Assuming you've got a willing team, you're well on your way. Most of the time that won't be the case. Instead, you have all kinds of 
+    A successful transformation creates a stronger working relationship between
+    the developers and operations folks. It allows for smaller and more
+    frequent releases. All the code for this release and those prior is
+    properly tagged in a trusted version control system [2]. It raises everyone's
+    confidence because changes are easier to understand and supported with unit
+    tests. In addition, the environment is created as needed, and does not
+    carry the accumulated waste of past releases. The new environment is built
+    from images that include the latest security patches. Monitoring and
+    reporting is baked in, and dynamic. If the machine goes boom for some
+    reason, rolling back, while almost always the last resort, is manageable.
 
-    As well, many times
-    operations is not consulted about how to ensure the new stuff is compatible
-    with existing applications or environments, etc. And operations is almost
-    never brought in when the project is still in the design phase. (It took a
-    long time for QA to get a seat at the table, and longer still to recognize
-    that operations belongs there too.) Repeat that cycle a few times and
-    you're likely to wind up with an "us versus them" mentality.
+    [^2] Side note: It's my view, maybe not widely shared, that a planned
+         release and the response to an outage incident are similar to one
+         another, and should be treated similarly in many respects. In both
+         cases, the code to deploy to add a new feature or fix a bug live in a
+         trusted repository. The steps to deploy should be conservative in that
+         what works for one should work for the other.
 
-    Looked at the a DevOps lens, though, 
+    DEVOPS TRANSFORMATION
 
-    DevOps 
+    A customer's DevOps transformation means developers now maintain their
+    creations throughout the full life cycle, including deployments. At the
+    same time, the operations staff have evolved from operators to owners. But
+    I've focused heavily on the cultural side so far. Time to get tactical.
 
-    To start with, DevOps is a set of practices. Maybe someday it'll be
+    **quote about the vast and endless sea**
 
-    One way to think about what DevOps is, is to look at life without it. 
+    I'd venture to say that many teams (or customers if you prefer) are
+    struggling with similar issues. I'd also suggest they have a couple things
+    that make their situation different than others--unique being too strong a
+    word here. At the same time, DevOps practices should be convergent and
+    frankly boring. I want consistent, repeatable and no surprises/drama. In
+    other words, I want to take a team from high to low variability,
+    specifically with respect to the machinery that allows them to focus on
+    what makes them unique. Very few teams, aside from CI/CD vendors, etc., has
+    ever differentiated themselves in the marketplace by how they compile their
+    bits!
 
-    DevOps is about appropriate application of pressure. 
+    Describe for the leaders and the practictioners (developers and ops folks)
+    what the future can be. Show possibilities. Maybe do a demo of a CI/CD flow
+    or spinning up a new QA environment on the fly. Answer questions. Try (but
+    not too hard) to respond to push back and recalcitrance. Show them another
+    way of thinking about things. Don't try to solve all their problems. Just
+    plant a seed. Some will take hold, some won't. That's fine.
 
-    I believe DevOps is about "getting everyone rowing in the same direction".
-    There's something of a hierarchy there, with people and systems on top, and
-    tools and technologies below that. 
+    Follow that by sitting down with the leaders to find out what the business
+    needs. Focus on issues of velocity, quality and process. There will
+    probably be more than enough there, if they're bringing someone in to try
+    and fix things.
 
-    Great question. If I represented DevOps as a Venn diagram, the common
-    region in the center would be communication.
+    Then sit down with some of the practitioners. Can you get them to talk?
+    Come with specific questions: what works with your software delivery
+    process today? What doesn't work? How long does it take to push a hotfix? A
+    release? What's your agile process like? Is it effective? Just get them
+    talking. Try and identify those who are eager to be involved, and those who
+    will take some time to come around. 
 
-    At its core, DevOps is about communication. Everything else follows from
-    there. That's almost uselessly vague so let me break it down a bit. You can
-    pretty easily come up with a checklist of things you should be doing, but
-    why bother? Joel Spolsky wrote on 18 years ago (!!) that's still pretty
-    good today.
+    Think big! Start small!
 
-    https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
+    You now have a better idea of the issues facing the team and their
+    collective mood/attitude. It's pretty clear you intend to change some
+    things. They've got work to do, and this ain't it. But the real issue is
+    you've got basically zero credibility with the team right now. You need a
+    quick win. It doesn't have to be much, but it absolutely should make people
+    understand how using it will improve their situation, even if just
+    slightly. There may be resistance, especially if you want to touch
+    something that people don't touch (it works, just leave it alone). Don't
+    choose that thing, but find something. :)
 
-    You may want to give it a refresh, but it's aged remarkably well, in my opinion.
+    Assuming that trial effort went okay, now is the time to engage with those
+    who are excited about what they're seeing! They're your MVPs. They've got
+    credibility (hopefully ;)) within the team, and they're open to what you're
+    there to help them do. It may not be feasible, but if you can, work with
+    the leaders to put a mixed team together, to identify a more substantial
+    project to tackle next. Regardless of what project is chosen, it's crucial
+    that you've got talent on the team to help move it forward.
 
-    Okay, so you've got your list of questions. What now? Start somewhere. How about 
+    There may be a bunch of administrative tasks to take care of, as people
+    wind down their sprint work, maybe set up a temp distriibution list on
+    their mail server, schedule meetings to start planning, etc. But this is a
+    critical step. If you've gotten people excited about what they're doing,
+    they'll give you their best.
 
+    Somewhere in here you're going to run into a bigger challenge. You may not
+    have much in the way of infrastructure already built out. You're going to
+    need to bring in some "practitioner consultants" to guide the members of
+    the new team. While the DL and everything is getting set up, you may have
+    time to pair up some of the "practitioner consultants" with new team
+    members for individual coaching.
 
-    If that's going back too far, there's always the 12 factor app
-
-    https://12factor.net/
-
-    
-
-    empowering developers and the people they 
-    
-    increasing visibility, increasing
-    confidence, not straying too far from the well-trod paths, and learning to
-    let go. 
-    
-    
-    It might be easier to talk about what DevOps **isn't**. It's not just setting up a build server, and pushing all to a test machine with every commit, although that's nice I guess.
-
-    A "top-down" view of DevOps is 
-
-    I think of "traditional" DevOps from the point of view of companies that
-    are already doing it, things like continuous integration, automated unit
-    testing, continuous deployment (to some 
+    Things are heating up now. It will hopefully snowball on you. But I've gone
+    on long enough (probably too long) for now. Thanks for causing me to
+    reconsider these types of questions!
 
 7. Now that you have defined a DevOps transformation, how would you execute
    this at a customer?
+
+    You just read it. :)
 
 8. Have you led a DevOps transformation and if so:
 
@@ -184,3 +268,5 @@ Ansible, Vagrant or Virtualbox, Nexus or Artifactory, AWS or Google or Azure
     * Why do you think this accomplishment was significant for your client? How
       about your company?
 
+
+    One of the last efforts I was involved in at Capital One was moving from our legacy 
