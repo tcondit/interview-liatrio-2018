@@ -268,5 +268,32 @@
     * Why do you think this accomplishment was significant for your client? How
       about your company?
 
+    One of the last efforts I was involved in at Capital One was moving from
+    our legacy version control system (AccuRev) to Enterprise (on-prem) GitHub.
+    We had eight weeks to get it done. My manager and the EVP who ordered the
+    work did an excellent job of communicating the business need to make this
+    transition. Myself and our project manager at the time managed the bulk of
+    the organization, reporting up and down, metrics collection, etc. We worked
+    with about twelve different sprint teams to move all sorts of different
+    depots (AccuRev's word for something like a repository) and streams
+    (similar but not really to a Git branch) into GitHub.
 
-    One of the last efforts I was involved in at Capital One was moving from our legacy 
+    As well, for some of the Java batch jobs, I wound up doing the conversions
+    myself because the teams were somewhat gutted at the time. (This all took
+    place in the middle of layoffs and re-orgs. It was controlled chaos in some
+    ways.)
+
+    Anyway, we ran into some interesting issues with reporting. It was very
+    difficult to accurately report at the right level of granularity, because
+    one depot might have one stream, and another might have many streams. Or
+    the source from one depot might be a simple conversion, say Gradle to
+    Gradle, but another one might be some kind of homegrown thing that needed
+    rehab in order to work on the other end. I don't recall the details, but do
+    remember being stumped on how to report things such that they didn't look
+    to rosy when in fact they were still in heavy development.
+
+    The key accomplishment was we shut down the contract for AccuRev, saving a
+    bunch of money. I don't recall the dollar amount today, but it was at least
+    $100k/yr., if not more. From a developer perspective, being where the rest
+    of the Retail and Direct Technology Org. was at was also substantial.
+
