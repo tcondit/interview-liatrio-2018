@@ -1,6 +1,5 @@
 # Liatrio Principal Consultant Questions
 
-
 1. **Q:** Can you travel up to 2 weeks out of 4 for consulting engagements to
    either coast? Are there any constraints we need to know about upfront that
    will prevent this regularly. (Mon-Thursday on site home every weekend)
@@ -59,43 +58,42 @@
 5. **Q:** Quickly define your familiarity with the following tools including
    when was the last time you were actually hands on with any of them:
 
-* Jenkins, Maven, Gulp or Grunt, Selenium, Cucumber, Chef or Puppet or Ansible,
+  * Jenkins, Maven, Gulp or Grunt, Selenium, Cucumber, Chef or Puppet or Ansible,
   Vagrant or Virtualbox, Nexus or Artifactory, AWS or Google or Azure
 
-  * **Jenkins:** most recently used it to set up automated deployments in my
-    current role; last used a few weeks ago
+    * **Jenkins:** most recently used it to set up automated deployments in my
+      current role; last used a few weeks ago
 
-  * **Maven:** not much experience with it; I've built and packaged batch jobs
-    at Capital One (ShareBuilder) to do end-of-day brokerage processing; last
-    used close to two years ago
+    * **Maven:** not much experience with it; I've built and packaged batch
+      jobs at Capital One (ShareBuilder) to do end-of-day brokerage processing;
+      last used close to two years ago
 
-  * **Gulp:** no experience; Grunt: I've built and deployed NodeJS code at work
-    for a partner application ("Dealer Portal"); last used a few months ago
+    * **Gulp:** no experience; **Grunt:** I've built and deployed NodeJS code
+      at work for a partner application ("Dealer Portal"); last used a few
+      months ago
 
-  * **Selenium:** no experience
+    * **Selenium:** no experience
 
-  * **Chef:** used a lot at Capital One for deployments which never seemed like
-    a good fit; I mostly remember fighting with the central server; last used
-    close to two years ago; Puppet: never for pay; Ansible: I've written a
-    bunch of playbooks to spin up our environments as needed, and sometimes
-    also use it for inventory queries; coached some of our developers on it,
-    which worked out well; last used a few weeks ago
+    * **Chef:** used a lot at Capital One for deployments which never seemed
+      like a good fit; I mostly remember fighting with the central server; last
+      used close to two years ago; **Puppet:** never for pay; **Ansible:** I've
+      written a bunch of playbooks to spin up our environments as needed, and
+      sometimes also use it for inventory queries; coached some of our
+      developers on it, which worked out well; last used a month or two ago
 
-  * **Vagrant** or **VirtualBox:** I've used both sometime this year;
-    VirtualBox is currently running on my work laptop as a host environment for
-    minikube (kubernetes)
+    * **Vagrant** or **VirtualBox:** I've used both sometime this year;
+      VirtualBox is currently running on my work laptop as a host environment
+      for minikube (kubernetes)
 
-  * **Nexus or Artifactory:** my team maintained an Artifactory instance for
-    local deployments. We also used a shared (corporate) Nexus instance; last
-    used close to two years ago for both (at Capital One)
+    * **Nexus or Artifactory:** my team maintained an Artifactory instance for
+      local deployments. We also used a shared (corporate) Nexus instance; last
+      used close to two years ago for both (at Capital One)
 
-  * **AWS:** very familiar with a dozen or so services; use it every day;
-    **Google Cloud Platform** or **Azure:** never for pay
+    * **AWS:** very familiar with a dozen or so services; use it every day;
+      **Google Cloud Platform** or **Azure:** never for pay
 
 6. **Q:** Please define what you believe to be DevOps and what a DevOps
    transformation at a customer would look like.
-
-    DEFINE DEVOPS
 
    **A:** Great questions. I've started to answer it about eleven times
    already. My current answer (but there are others) is that DevOps is about
@@ -148,19 +146,19 @@
    which to deploy and run those applications. And both will have share their
    sometimes siloed knowledge with each other to help the team succeed.
 
-   I've not mentioned perceived risk, but it's a big one. Virtual machines,
-   then Git, now hosted cloud environments potentially lower to virtually nil
-   the risk associated with making changes. Anyone can spin up an ephemeral EC2
-   instance and associated machinery (VPC, internet gateway, security groups,
-   EBS, etc.) and have a live environment in minutes. With automation like
-   CloudFormation or Terraform, they hardly even need to know how it was
-   created. When they're done with it, just delete the entire stack! This is a
-   wonderful technical achievement, but I'm more interested in the way it
-   changes peoples' relationships to their compute environments. The "pets" are
-   gone, and the "cattle" are slowly taking their place. No risk, no loss.
-   Repeat as often as necessary, and please don't think you need to keep some
-   polluted old machine hanging around because "that's how we've always done
-   it". Please. No.
+   I've not mentioned perceived risk, but it's a big one. First virtual
+   machines, then Git, now hosted cloud environments potentially lower to
+   virtually nil the risk associated with making changes. Anyone can spin up an
+   ephemeral EC2 instance and associated machinery (VPC, internet gateway,
+   security groups, EBS, etc.) and have a live environment in minutes. With
+   automation like CloudFormation or Terraform, they hardly even need to know
+   how it was created. When they're done with it, just delete the entire stack!
+   This is a wonderful technical achievement, but I'm more interested in the
+   way it changes peoples' relationships to their compute environments. The
+   "pets" are gone, and the "cattle" are slowly taking their place. No risk, no
+   loss.  Repeat as often as necessary, and please don't think you need to keep
+   some polluted old machine hanging around because "that's how we've always
+   done it". Please. No.
 
    A successful transformation creates a stronger working relationship between
    the developers and operations folks. It allows for smaller and more frequent
@@ -168,10 +166,10 @@
    in a trusted version control system [2]. It raises everyone's confidence
    because changes are easier to understand and supported with unit tests. In
    addition, the environment is created as needed, and does not carry the
-   accumulated waste of past releases. The new environment is built from images
-   that include the latest security patches. Monitoring and reporting is baked
-   in, and dynamic. If the machine goes boom for some reason, rolling back,
-   while almost always the last resort, is manageable.
+   accumulated detritus of past releases. The new environment is built from
+   images that include the latest security patches. Monitoring and reporting is
+   baked in, and dynamic. If the machine goes boom for some reason, rolling
+   back, while almost always the last resort, is manageable.
 
     [^2] Side note: It's my view, maybe not widely shared, that a planned
          release and the response to an outage incident are similar to one
@@ -180,12 +178,13 @@
          trusted repository. The steps to deploy should be conservative in that
          what works for one should work for the other.
 
-    DEVOPS TRANSFORMATION
+7. **Q:** Now that you have defined a DevOps transformation, how would you
+   execute this at a customer?
 
-   A customer's DevOps transformation means developers now maintain their
-   creations throughout the full life cycle, including deployments. At the same
-   time, the operations staff have evolved from operators to owners. But I've
-   focused heavily on the cultural side so far. Time to get tactical.
+   **A:** A customer's DevOps transformation means developers now maintain
+   their creations throughout the full life cycle, including deployments. At
+   the same time, the operations staff have evolved from operators to owners.
+   But I've focused heavily on the cultural side so far. Time to get tactical.
 
    I'd venture to say that many teams (or customers if you prefer) are
    struggling with similar issues. I'd also suggest they have a couple things
@@ -232,12 +231,12 @@
    who are excited about what they're seeing! They're your MVPs. They've got
    credibility (hopefully ;)) within the team, and they're open to what you're
    there to help them do. It may not be feasible, but if you can, work with the
-   leaders to put a mixed team together, to identify a more substantial project
-   to tackle next. Regardless of what project is chosen, it's crucial that
-   you've got talent on the team to help move it forward.
+   leaders to put a mixed team together, and identify a more substantial
+   project to tackle next. Regardless of what project is chosen, it's crucial
+   that you've got talent on the team to help move it forward.
 
    There may be a bunch of administrative tasks to take care of, as people wind
-   down their sprint work, maybe set up a temp distriibution list on their mail
+   down their sprint work, maybe set up a temp distribution list on their mail
    server, schedule meetings to start planning, etc. But this is a critical
    step. If you've gotten people excited about what they're doing, they'll give
    you their best.
@@ -253,46 +252,40 @@
    on long enough (probably too long) for now. Thanks for causing me to
    reconsider these types of questions!
 
-7. **Q:** Now that you have defined a DevOps transformation, how would you
-   execute this at a customer?
-
-   **A:** You just read it. :)
-
 8. **Q:** Have you led a DevOps transformation and if so:
 
-* Please provide a specific company name/scenario AND a key accomplishment
-  during that project?
-* Why do you think this accomplishment was significant for your client? How
-  about your company?
+  * Please provide a specific company name/scenario AND a key accomplishment
+    during that project?
+  * Why do you think this accomplishment was significant for your client? How
+    about your company?
 
-   **A:** One of the last efforts I was involved in at Capital One was moving
-   from our legacy version control system (AccuRev) to Enterprise (on-prem)
-   GitHub.  We had eight weeks to get it done. My manager and the EVP who
-   ordered the work did an excellent job of communicating the business need to
-   make this transition. Myself and our project manager at the time managed the
-   bulk of the organization, reporting up and down, metrics collection, etc. We
-   worked with about twelve different sprint teams to move all sorts of
-   different depots (AccuRev's word for something like a repository) and
-   streams (similar but not really to a Git branch) into GitHub.
+    **A:** One of the last efforts I was involved in at Capital One was moving
+    from our legacy version control system (AccuRev) to Enterprise GitHub. We
+    had eight weeks to get it done. My manager and the VP who ordered the work
+    did an excellent job of communicating the business need to make this
+    transition. Myself and our project manager at the time managed the bulk of
+    the organization, reporting up and down, metrics collection, etc. We worked
+    with about twelve different sprint teams to move all sorts of different
+    depots (AccuRev's word for something like a repository) and streams
+    (similar but not really to a Git branch) into GitHub.
 
-   As well, for some of the Java batch jobs, I wound up doing the conversions
-   myself because the teams were somewhat gutted at the time. (This all took
-   place in the middle of layoffs and re-orgs. It was controlled chaos in some
-   ways.)
+    As well, for some of the Java batch jobs, I wound up doing the conversions
+    myself because the teams were somewhat gutted at the time. (This all took
+    place in the middle of layoffs and re-orgs.)
 
-   Anyway, we ran into some interesting issues with reporting. It was very
-   difficult to accurately report at the right level of granularity, because
-   one depot might have one stream, and another might have many streams. Or the
-   source from one depot might be a simple conversion, say Gradle to Gradle,
-   but another one might be some kind of homegrown thing that needed rehab in
-   order to work on the other end. I don't recall the details, but do remember
-   being stumped on how to report things such that they didn't look too rosy
-   when in fact they were still in heavy development.
+    Anyway, we ran into some interesting issues with reporting. It was very
+    difficult to accurately report at the right level of granularity, because
+    one depot might have one stream, and another might have many streams. Or
+    the source from one depot might be a simple conversion, say Gradle to
+    Gradle, but another one might be some kind of homegrown thing that needed
+    rehab in order to work on the other end. I don't recall the details, but do
+    remember being stumped on how to report things such that they didn't look
+    too rosy when in fact they were still in heavy development.
 
-   The key accomplishment was we shut down the contract for AccuRev (the
-   artificial but effective reason for the urgency), saving a bunch of money.
-   I don't recall the dollar amount today, but it was at least $100k/yr., if
-   not more. From a developer perspective, having our code colocated with the
-   rest of our organization (Retail and Direct Technology) was also
-   substantial.
+    The key accomplishment was we shut down the contract for AccuRev (the
+    artificial but effective reason for the urgency), saving a bunch of money.
+    I don't recall the dollar amount today, but it was at least $100k/yr., if
+    not more. From a developer perspective, having our code colocated with the
+    rest of our organization (Retail and Direct Technology) was also
+    substantial.
 
