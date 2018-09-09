@@ -19,19 +19,38 @@
 - name: Install neovim
   apt: pkg=neovim state=present
 
+- name: Install tree
+  apt: pkg=tree state=present
+
 
 - name: update apt-get if needed
   apt:
     update_cache: yes
 
-#- name: Install base packages with apt
+# TODO consider adding nvim config
+# TODO consider adding bashrc
+
+## new style (less informative)
+#- name: Install base packages with apt/1
 #  apt:
-#      name "{{ items }}" state=present
+#      name={{ items }} state=present
 #  vars:
 #      items:
-#          aptitude
-#          awscli
-#          curl
-#          direnv
-#          git
-#          neovim
+#          - aptitude
+#          - awscli
+#          - curl
+#          - direnv
+#          - git
+#          - neovim
+#
+## old style
+#- name: Install base packages with apt/2
+#  apt:
+#      name={{ item }} state=present
+#  with_items:
+#      - aptitude
+#      - awscli
+#      - curl
+#      - direnv
+#      - git
+#      - neovim

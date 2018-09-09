@@ -8,8 +8,7 @@
   debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
 
 - name: Install Oracle Java 8
-  apt:
-      name={{ item }} state=present
+  apt: name={{ item }} state=present
   with_items:
     - oracle-java8-installer
     - ca-certificates
@@ -26,12 +25,16 @@
 # strictly, this may not be idempotent (or the state change equivalent, if
 # there is one) since it'll cause a change every time ; practically, I'm fine
 # with that
-#
-# this is a destructive operation, but on first install that's okay ; it's
-# later on after Jenkins is already installed that it becomes a potential issue
+
+# this is a potentially destructive operation, but on first install that's okay
+# ; it's after Jenkins is already installed that it may become an issue
+
 - name: Restart Jenkins service to pick up any changes
   systemd:
       state: restarted
       daemon_reload: yes
       name: jenkins
 
+      #- name: Install plugin git
+      #  jenkins_plugin:
+      #      name: git
