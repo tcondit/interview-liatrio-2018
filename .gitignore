@@ -1,3 +1,4 @@
 technical-exercise/.envrc
 **/ansible.log
 **/*.xxx
+**/*.retry
