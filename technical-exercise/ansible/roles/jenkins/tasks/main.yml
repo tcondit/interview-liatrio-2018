@@ -1,20 +1,21 @@
 - name: Install add-apt-repostory
   apt: name=software-properties-common state=present
 
-- name: Add Oracle Java Repository
+- name: Add Oracle Java repository
   apt_repository: repo='ppa:webupd8team/java'
 
-- name: Accept Java 8 License
+- name: Accept Java 8 license
   debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
 
 - name: Install Oracle Java 8
-  apt: name={{item}} state=present
+  apt:
+      name={{ item }} state=present
   with_items:
     - oracle-java8-installer
     - ca-certificates
     - oracle-java8-set-default
 
-- name: Installing jenkins
+- name: Install Jenkins
   apt: pkg=jenkins state=present
 
       #- name: Start jenkins service
@@ -25,7 +26,10 @@
 # strictly, this may not be idempotent (or the state change equivalent, if
 # there is one) since it'll cause a change every time ; practically, I'm fine
 # with that
-- name: Restart jenkins service to pick up any changes
+#
+# this is a destructive operation, but on first install that's okay ; it's
+# later on after Jenkins is already installed that it becomes a potential issue
+- name: Restart Jenkins service to pick up any changes
   systemd:
       state: restarted
       daemon_reload: yes
