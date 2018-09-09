@@ -1,0 +1,37 @@
+# base packages
+# sticking with this instead of "items" because it's more verbose
+
+- name: Install aptitude
+  apt: pkg=aptitude state=present
+
+- name: Install awscli
+  apt: pkg=awscli state=present
+
+- name: Install curl
+  apt: pkg=curl state=present
+
+- name: Install direnv
+  apt: pkg=direnv state=present
+
+- name: Install git
+  apt: pkg=git state=present
+
+- name: Install neovim
+  apt: pkg=neovim state=present
+
+
+- name: update apt-get if needed
+  apt:
+    update_cache: yes
+
+#- name: Install base packages with apt
+#  apt:
+#      name "{{ items }}" state=present
+#  vars:
+#      items:
+#          aptitude
+#          awscli
+#          curl
+#          direnv
+#          git
+#          neovim
