@@ -346,3 +346,145 @@ Taken together, these three are too much. I'm gonna spin up a control machine on
   * commit 7a9f6939842c3ebf08f84bd941a217bce689e10f
   * commit 06e2cfbcceec5840b382081d1b3ec2488c9903c5
   * or don't bother
+
+* (from Ubuntu/admin)
+
+* created branch `develop`
+* installed on both machines
+  * ansible
+  * awscli
+  * direnv
+  * git
+  * neovim
+
+* [ ] **TODO** I really should just suck it up and create a playbook for this
+* [ ] **TODO** get my nvim config on the `admin` instance
+
+* thinking more about `Packer` and `Ansible`, I may want to "bake in" `Ansible` and dependencies into the images
+
+* [ ] **TODO** need to think about bootstrapping `ansible-galaxy` roles onto `admin`
+  * what are the configuration steps? It's been a long time
+  * can I "bootstrap" the install via a playbook? Never tried it, but maybe.
+
+* this was new to me ; I like it
+  * [Automatically install Ansible Galaxy roles with requirements.yml](https://zaiste.net/automatically_install_ansible_galaxy_roles_with_requirements_yml/)
+
+* trouble
+
+    ```bash
+    ubuntu@ip-172-31-29-171:~/interview-liatrio-2018/technical-exercise/ansible$ ansible-playbook playbook.yml --limit=admin
+172.31.18.219 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_all_ipv4_addresses": [
+            "172.31.18.219"
+        ],
+    ...
+    172.31.18.219 | FAILED! => {
+    "cache_update_time": 1536476283,
+    "cache_updated": false,
+    "changed": false,
+    "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"     install 'jenkins'' failed: E: Sub-process /usr/bin/dpkg returned an error code (1)\n",
+    "rc": 100,
+    "stderr": "E: Sub-process /usr/bin/dpkg returned an error code (1)\n",
+    "stderr_lines": [
+        "E: Sub-process /usr/bin/dpkg returned an error code (1)"
+    ],
+    "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\njenkins is already the newest version (2.141).\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.\n1 not fully installed or removed.\nAfter this operation, 0 B of additional disk space will be used.\nSetting up jenkins (2.141) ...\r\nJob for jenkins.service failed because the control process exited with error code.\r\nSee \"systemctl status jenkins.service\" and \"journalctl -xe\" for details.\r\ninvoke-rc.d: initscript jenkins, action \"start\" failed.\r\n\u001b[0;1;31m*\u001b[0m jenkins.service - LSB: Start Jenkins at boot time\r\n   Loaded: loaded (/etc/init.d/jenkins; generated)\r\n   Active: \u001b[0;1;31mfailed\u001b[0m (Result: exit-code) since Sun 2018-09-09 07:02:35 UTC; 6ms ago\r\n     Docs: man:systemd-sysv-generator(8)\r\n  Process: 27630 ExecStart=/etc/init.d/jenkins start \u001b[0;1;31m(code=exited, status=1/FAILURE)\u001b[0m\r\n\r\nSep 09 07:02:35 ip-172-31-18-219 systemd[1]: Starting LSB: Start Jenkins at boot time...\r\nSep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: Found an incorrect Java version\r\nSep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: Java version found:\r\nSep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: openjdk version \"10.0.2\" 2018-07-17\r\nSep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: OpenJDK Runtime Environment (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.1)\r\nSep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: OpenJDK 64-Bit Server VM (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.1, mixed mode)\r\nSep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: Aborting\r\nSep 09 07:02:35 ip-172-31-18-219 systemd[1]: \u001b[0;1;39m\u001b[0;1;31m\u001b[0;1;39mjenkins.service: Control process exited, code=exited status=1\u001b[0m\r\nSep 09 07:02:35 ip-172-31-18-219 systemd[1]: \u001b[0;1;39m\u001b[0;1;31m\u001b[0;1;39mjenkins.service: Failed with result 'exit-code'.\u001b[0m\r\nSep 09 07:02:35 ip-172-31-18-219 systemd[1]: \u001b[0;1;31m\u001b[0;1;39m\u001b[0;1;31mFailed to start LSB: Start Jenkins at boot time.\u001b[0m\r\ndpkg: error processing package jenkins (--configure):\r\n installed jenkins package post-installation script subprocess returned error exit status 1\r\nErrors were encountered while processing:\r\n jenkins\r\n",
+    "stdout_lines": [
+        "Reading package lists...",
+        "Building dependency tree...",
+        "Reading state information...",
+        "jenkins is already the newest version (2.141).",
+        "0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.",
+        "1 not fully installed or removed.",
+        "After this operation, 0 B of additional disk space will be used.",
+        "Setting up jenkins (2.141) ...",
+        "Job for jenkins.service failed because the control process exited with error code.",
+        "See \"systemctl status jenkins.service\" and \"journalctl -xe\" for details.",
+        "invoke-rc.d: initscript jenkins, action \"start\" failed.",
+        "\u001b[0;1;31m*\u001b[0m jenkins.service - LSB: Start Jenkins at boot time",
+        "   Loaded: loaded (/etc/init.d/jenkins; generated)",
+        "   Active: \u001b[0;1;31mfailed\u001b[0m (Result: exit-code) since Sun 2018-09-09 07:02:35 UTC; 6ms ago",
+        "     Docs: man:systemd-sysv-generator(8)",
+        "  Process: 27630 ExecStart=/etc/init.d/jenkins start \u001b[0;1;31m(code=exited, status=1/FAILURE)\u001b[0m",
+        "",
+        "Sep 09 07:02:35 ip-172-31-18-219 systemd[1]: Starting LSB: Start Jenkins at boot time...",
+        "Sep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: Found an incorrect Java version",
+        "Sep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: Java version found:",
+        "Sep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: openjdk version \"10.0.2\" 2018-07-17",
+        "Sep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: OpenJDK Runtime Environment (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.1)",
+        "Sep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: OpenJDK 64-Bit Server VM (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.1, mixed mode)",
+        "Sep 09 07:02:35 ip-172-31-18-219 jenkins[27630]: Aborting",
+        "Sep 09 07:02:35 ip-172-31-18-219 systemd[1]: \u001b[0;1;39m\u001b[0;1;31m\u001b[0;1;39mjenkins.service: Control process exited, code=exited status=1\u001b[0m",
+        "Sep 09 07:02:35 ip-172-31-18-219 systemd[1]: \u001b[0;1;39m\u001b[0;1;31m\u001b[0;1;39mjenkins.service: Failed with result 'exit-code'.\u001b[0m",
+        "Sep 09 07:02:35 ip-172-31-18-219 systemd[1]: \u001b[0;1;31m\u001b[0;1;39m\u001b[0;1;31mFailed to start LSB: Start Jenkins at boot time.\u001b[0m",
+        "dpkg: error processing package jenkins (--configure):",
+        " installed jenkins package post-installation script subprocess returned error exit status 1",
+        "Errors were encountered while processing:",
+        " jenkins"
+    ]
+}
+	to retry, use: --limit @/home/ubuntu/interview-liatrio-2018/technical-exercise/ansible/playbook.retry
+    ```
+
+The output is more readable because I added "stdout_callback = minimal" to `ansible.cfg`. But essentially `geerlingguy.jenkins` depends on `geerlingguy.java`, which is installing openjdk v10. I *think* this version of `Jenkins` will only work with v8.
+
+I'll need to figure out how to write this into a playbook, but for now here's the manual approach.
+
+* [ ] **TODO** go back to 16.04?
+
+    ```bash
+    ubuntu@ip-172-31-29-171:~/interview-liatrio-2018/technical-exercise/ansible$ sudo update-alternatives --config java
+    There are 2 choices for the alternative java (providing /usr/bin/java).
+
+      Selection    Path                                            Priority   Status
+    ------------------------------------------------------------
+    * 0            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1101      auto mode
+      1            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1101      manual mode
+      2            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      manual mode
+
+    Press <enter> to keep the current choice[*], or type selection number: 2
+    update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java to provide /usr/bin/java (java) in manual mode
+    ```
+
+Check version
+
+    ```bash
+    ubuntu@ip-172-31-29-171:~/interview-liatrio-2018/technical-exercise/ansible$ java -version
+    openjdk version "1.8.0_181"
+    OpenJDK Runtime Environment (build 1.8.0_181-8u181-b13-0ubuntu0.18.04.1-b13)
+    OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
+    ```
+
+Finish jenkins install via apt
+
+    ```bash
+    ubuntu@ip-172-31-29-171:~/interview-liatrio-2018/technical-exercise/ansible$ sudo apt install jenkins
+    Reading package lists... Done
+    Building dependency tree
+    Reading state information... Done
+    jenkins is already the newest version (2.141).
+    0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+    ```
+
+check systemctl
+
+    ```bash
+    ubuntu@ip-172-31-29-171:~/interview-liatrio-2018/technical-exercise/ansible$ sudo systemctl status jenkins
+    ● jenkins.service - LSB: Start Jenkins at boot time
+       Loaded: loaded (/etc/init.d/jenkins; generated)
+       Active: active (exited) since Sun 2018-09-09 07:24:23 UTC; 1min 11s ago
+         Docs: man:systemd-sysv-generator(8)
+      Process: 32429 ExecStart=/etc/init.d/jenkins start (code=exited, status=0/SUCCESS)
+
+    Sep 09 07:24:22 ip-172-31-29-171 systemd[1]: Starting LSB: Start Jenkins at boot time...
+    Sep 09 07:24:22 ip-172-31-29-171 jenkins[32429]: Correct java version found
+    Sep 09 07:24:22 ip-172-31-29-171 jenkins[32429]:  * Starting Jenkins Automation Server jenkins
+    Sep 09 07:24:22 ip-172-31-29-171 su[32477]: Successful su for jenkins by root
+    Sep 09 07:24:22 ip-172-31-29-171 su[32477]: + ??? root:jenkins
+    Sep 09 07:24:22 ip-172-31-29-171 su[32477]: pam_unix(su:session): session opened for user jenkins by (uid=0)
+    Sep 09 07:24:22 ip-172-31-29-171 su[32477]: pam_unix(su:session): session closed for user jenkins
+    Sep 09 07:24:23 ip-172-31-29-171 jenkins[32429]:    ...done.
+    Sep 09 07:24:23 ip-172-31-29-171 systemd[1]: Started LSB: Start Jenkins at boot time.
+    ```
+

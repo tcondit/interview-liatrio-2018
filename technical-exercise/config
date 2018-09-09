@@ -2,10 +2,12 @@
 
 Host jenkins-nexus-pub
   Hostname 52.201.237.206
+  User ubuntu
   IdentityFile /Users/tim.condit/PhilipJFry/cloud-storage/Dropbox/jobs/20180819-Liatrio/technical-exercise/liatrio-us-east-1.pem
 
 Host admin-pub
   Hostname 54.235.27.26
+  User ubuntu
   IdentityFile /Users/tim.condit/PhilipJFry/cloud-storage/Dropbox/jobs/20180819-Liatrio/technical-exercise/liatrio-us-east-1.pem
 
 Host jenkins-nexus
