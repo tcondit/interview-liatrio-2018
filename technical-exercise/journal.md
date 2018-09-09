@@ -293,3 +293,56 @@ Taken together, these three are too much. I'm gonna spin up a control machine on
     Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.4.0-1065-aws x86_64)
     ```
 
+* [ ] **TODO** get updates into `Packer` image (how?)
+  * prioritize this for later
+
+* updated `example.json` to `Bionic Beaver 18.04.1 LTS` ; let's see how/if it works
+
+    ```bash
+    ~/P/c/D/j/2/technical-exercise ☕️  packer build example.json
+    amazon-ebs output will be in this color.
+
+    ==> amazon-ebs: Prevalidating AMI Name: packer-example 1536464481
+        amazon-ebs: Found Image ID: ami-07917569e2c4a2b6a
+    ==> amazon-ebs: Creating temporary keypair: packer_5b949661-7f5e-4eb9-17de-4a2cb5bab5cb
+    ==> amazon-ebs: Creating temporary security group for this instance: packer_5b949664-b361-e162-8fbe-70700f92a9be
+    ==> amazon-ebs: Authorizing access to port 22 from 0.0.0.0/0 in the temporary security group...
+    ==> amazon-ebs: Launching a source AWS instance...
+    ==> amazon-ebs: Adding tags to source instance
+        amazon-ebs: Adding tag: "Name": "Packer Builder"
+        amazon-ebs: Instance ID: i-0de16739ed057d4bb
+    ==> amazon-ebs: Waiting for instance (i-0de16739ed057d4bb) to become ready...
+    ==> amazon-ebs: Waiting for SSH to become available...
+    ==> amazon-ebs: Connected to SSH!
+    ==> amazon-ebs: Stopping the source instance...
+        amazon-ebs: Stopping instance, attempt 1
+    ==> amazon-ebs: Waiting for the instance to stop...
+    ==> amazon-ebs: Creating the AMI: packer-example 1536464481
+        amazon-ebs: AMI: ami-027a933122e083b25
+    ==> amazon-ebs: Waiting for AMI to become ready...
+    ==> amazon-ebs: Terminating the source AWS instance...
+    ==> amazon-ebs: Cleaning up any extra volumes...
+    ==> amazon-ebs: No volumes to clean up, skipping
+    ==> amazon-ebs: Deleting temporary security group...
+    ==> amazon-ebs: Deleting temporary keypair...
+    Build 'amazon-ebs' finished.
+
+    ==> Builds finished. The artifacts of successful builds are:
+    --> amazon-ebs: AMIs were created:
+    us-east-1: ami-027a933122e083b25
+    ```
+
+* **I-DONE-THAT** created new AMI (18.04) ; created new 18.04 instances `jenkins-nexus` and `admin`
+* **I-DONE-THAT** terminated 16.04 instances `jenkins-nexus` and `admin` ; deleted 16.04 AMIs (two) ; deleted 16.04 snapshots (two)
+* **I-DONE-THAT** updated `config` and verified SSH access
+
+    ```bash
+    ubuntu@ip-172-31-29-171:~$ sudo apt-get install git ansible
+    ```
+
+* [ ] **TODO** amend user name for these commits
+  * commit 69141d997f80829ee0d5589160450259c9cacf14
+  * commit b581237a7289210bb752cad2e68409d3ef39142c
+  * commit 7a9f6939842c3ebf08f84bd941a217bce689e10f
+  * commit 06e2cfbcceec5840b382081d1b3ec2488c9903c5
+  * or don't bother
