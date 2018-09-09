@@ -27,6 +27,7 @@ A clean slate on which to drop everything I think, imagine, ask about, do or wha
 * **TODO** (shell alias _ + todo)
 * **SHORTCUT**
 * **I-DONE-THAT** (shell alias _ + idone)
+* **QUESTION** - for the interview team at Liatrio
 
 * [ ] **TODO** store configuration code (Packer, TF, Ansible) together or separate? Name conventions?
 
@@ -447,7 +448,7 @@ I'll need to figure out how to write this into a playbook, but for now here's th
     update-alternatives: using /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java to provide /usr/bin/java (java) in manual mode
     ```
 
-Check version
+* check version
 
     ```bash
     ubuntu@ip-172-31-29-171:~/interview-liatrio-2018/technical-exercise/ansible$ java -version
@@ -456,7 +457,7 @@ Check version
     OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
     ```
 
-Finish jenkins install via apt
+* finish jenkins install via apt
 
     ```bash
     ubuntu@ip-172-31-29-171:~/interview-liatrio-2018/technical-exercise/ansible$ sudo apt install jenkins
@@ -467,7 +468,7 @@ Finish jenkins install via apt
     0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
     ```
 
-check systemctl
+* check systemctl
 
     ```bash
     ubuntu@ip-172-31-29-171:~/interview-liatrio-2018/technical-exercise/ansible$ sudo systemctl status jenkins
@@ -487,4 +488,52 @@ check systemctl
     Sep 09 07:24:23 ip-172-31-29-171 jenkins[32429]:    ...done.
     Sep 09 07:24:23 ip-172-31-29-171 systemd[1]: Started LSB: Start Jenkins at boot time.
     ```
+
+## 20180909 Sun
+
+* [ ] **TODO** GitHub SSH key to `admin`
+* skip using the Java and Jenkins roles? Seems like a terrible idea.
+  * unless I write my own roles
+
+* [ ] **TODO** rename subdirectory `ansible` to ... something
+
+* Today is more work, less navel gazing. ;)
+
+* It's time to spin up a few new instances to smoke test the Ansible configs in their current state. I've got roles for base packages and Jenkins. With the Jenkins role, I'm caling `systemd` to restart the service, and am not convinced that's the right way to go. Also, there are no plugins installed yet. I may add one, something like `git` (need to check the name, probably `git-plugin` or similar) just to work thru the syntax. Then it's repeatable (to a point).
+
+* having a total flashback ; I'm currently working on adding Jenkins plugins via Ansible, and it's failing with 
+
+    ```bash
+    TASK [jenkins : Install plugin git] ********************************************************************************************************************************************
+    fatal: [172.31.18.219]: FAILED! => {"changed": false, "details": "HTTP Error 503: Service Unavailable", "msg": "Cannot get CSRF"}
+    	to retry, use: --limit @/home/ubuntu/interview-liatrio-2018/technical-exercise/ansible/playbook.retry
+    ```
+
+* The flashback part is that I've done this exact same thing a long time ago (maybe at COF) ; and the issue may be that there's no delay between restarting the service and when I try to do something with it ; chances are good it's not fully ready to go
+* There's a second issue: Jenkins since sometime early in v2.x has had that lock screen where you have to pass in the `initialAdminPassword` to do anything ; I seem to recall working thru some stuff from Viktor Farcic to get this working
+* A couple links, where one refers to the other
+  * [Avoid 2.0 setup wizard but provide secure-by-default configuration #50](https://github.com/geerlingguy/ansible-role-jenkins/issues/50)
+  * [Jenkins 2.0: Turn off Setup wizard](https://groups.google.com/forum/#!msg/jenkinsci-users/Pb4QZVc2-f0/ywKqZVf9MgAJ)
+
+* Well hmm. Here's the top of `/etc/default/jenkins` ; seems like I've got some other issue
+
+    ```bash
+    # Allow graphs etc. to work even when an X server is present
+    JAVA_ARGS="-Djava.awt.headless=true"
+    JAVA_ARGS="$JAVA_ARGS -Djenkins.install.runSetupWizard=false"
+    ```
+
+* **QUESTION** What's the usual practice you guys follow for asking questions? Just put it out there and someone will respond?
+* **QUESTION** I'm stuck trying to figure out why even though `/etc/default/jenkins` (on a Ubuntu instance) has the following lines, I'm still seeing the "unlock Jenkins" screen on login
+
+* nice touch ; I've done similar things in the past, but can't find it right now :|
+  * [How to set host_key_checking=false in ansible inventory file?](https://stackoverflow.com/questions/23074412/how-to-set-host-key-checking-false-in-ansible-inventory-file)
+  * found it over in `/Users/tim.condit/PhilipJFry/src/Numera_Engineering/numera-jenkins/docker/share/src/scripts`
+
+	```bash
+    # don't ask "are you sure?"
+    sudo docker exec numera-nexus /bin/bash -c 'echo -e "Host bitbucket.org\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config'
+    ```
+
+* [ ] **TODO** figure out how to use `StrictHostKeyChecking no` in Ansible
 
