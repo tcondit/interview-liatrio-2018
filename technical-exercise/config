@@ -1,9 +1,20 @@
 # platform: /etc/lsb-release -> Ubuntu 18.04.1 LTS
-Host jenkins-nexus
+
+Host jenkins-nexus-pub
   Hostname 52.201.237.206
+  User ubuntu
+  IdentityFile /Users/tim.condit/PhilipJFry/cloud-storage/Dropbox/jobs/20180819-Liatrio/technical-exercise/liatrio-us-east-1.pem
+
+Host admin-pub
+  Hostname 54.235.27.26
+  User ubuntu
+  IdentityFile /Users/tim.condit/PhilipJFry/cloud-storage/Dropbox/jobs/20180819-Liatrio/technical-exercise/liatrio-us-east-1.pem
+
+Host jenkins-nexus
+  Hostname 172.31.29.171
 
 Host admin
-  Hostname 54.235.27.26
+  Hostname 172.31.18.219
 
 Host *
   User ubuntu
