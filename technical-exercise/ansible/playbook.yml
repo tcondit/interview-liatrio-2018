@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: yes
+
+  pre_tasks:
+      #    - name: install Jenkins galaxy role
+
+    - name: install base packages
+      apt:
+        name:
+          - aptitude
+          - awscli
+          - direnv
+          - git
+          - neovim
+        state: latest
+
+    - name: update apt-get if needed
+      apt:
+        update_cache: yes
