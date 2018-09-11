@@ -1,4 +1,12 @@
-technical-exercise/.envrc
-**/ansible.log
-**/*.xxx
+# Ansible
 **/*.retry
+**/ansible.log
+
+# direnv
+**/.envrc
+
+# SSH
+**/*.pem
+
+# Terraform
+**/terraform.tfstate*
