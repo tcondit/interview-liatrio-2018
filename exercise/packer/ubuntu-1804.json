@@ -23,10 +23,16 @@
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
       "ami_name": "Ubuntu 18.04 LTS (timestamp: {{timestamp}})",
-      "ami_description": "Liatrio exercise (unmodified)",
+      "ami_description": "Liatrio exercise",
       "tags": {
-	"Name": "Liatrio exercise (unmodified)"
+	"Name": "Liatrio exercise"
       }
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "provision.sh"
     }
   ]
 }
