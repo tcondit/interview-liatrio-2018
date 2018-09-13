@@ -2,12 +2,16 @@
 - hosts: all
   become: true
 
-  vars:
-      # TODO get this from Terraform
-      jenkins_hostname: 172.31.20.167
-      java_packages:
-        - openjdk-8-jdk
+  # TODO fix this
+  #  vars:
+  #    jenkins_admin_password: "fubar"
+  #    nexus_admin_password: "fubar"
+
+    #jenkins_admin_password:  {{ lookup('env', 'JENKINS_ADMIN_PASSWORD') }}
+    #nexus_admin_password:  {{ lookup('env', 'NEXUS_ADMIN_PASSWORD') }}
 
   roles:
-    - base
+    - timcondit.coretools
+    - timcondit.java
+    - ansible-thoteam.nexus3-oss
     - geerlingguy.jenkins

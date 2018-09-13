@@ -1,0 +1,30 @@
+# sticking with this longform instead of using 'items' or with_items because
+# it's more verbose
+
+- name: Install aptitude
+  apt: pkg=aptitude state=present
+
+- name: Install awscli
+  apt: pkg=awscli state=present
+
+- name: Install curl
+  apt: pkg=curl state=present
+
+- name: Install direnv
+  apt: pkg=direnv state=present
+
+- name: Install git
+  apt: pkg=git state=present
+
+- name: Install neovim
+  apt: pkg=neovim state=present
+
+- name: Install silversearcher-ag
+  apt: pkg=silversearcher-ag state=present
+
+- name: Install tree
+  apt: pkg=tree state=present
+
+- name: update apt-get if needed
+  apt:
+    update_cache: yes
