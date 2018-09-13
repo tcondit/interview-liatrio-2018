@@ -1,6 +1,9 @@
 ---
 - hosts: all
   become: true
+  vars:
+      # TODO get this from Terraform
+      jenkins_hostname: 172.31.20.167
   roles:
     - base
-    - jenkins
+    - geerlingguy.jenkins

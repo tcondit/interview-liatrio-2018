@@ -16,6 +16,11 @@ Host admin
 #Host jenkins-nexus
 #  Hostname 172.31.29.171
 
+Host exerciseEC2-pub
+  Hostname 52.2.239.123
+  User ubuntu
+  IdentityFile /Users/timc/.ssh/liatrio-us-east-1a.pem
+
 Host *
   User ubuntu
-  IdentityFile /home/ubuntu/.ssh/liatrio-us-east-1.pem
+  IdentityFile /Users/timc/.ssh/liatrio-us-east-1.pem

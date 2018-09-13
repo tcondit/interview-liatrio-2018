@@ -22,7 +22,11 @@
       },
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
-      "ami_name": "Ubuntu 18.04 LTS (timestamp: {{timestamp}})"
+      "ami_name": "Ubuntu 18.04 LTS (timestamp: {{timestamp}})",
+      "ami_description": "Liatrio exercise (unmodified)",
+      "tags": {
+	"Name": "Liatrio exercise (unmodified)"
+      }
     }
   ]
 }

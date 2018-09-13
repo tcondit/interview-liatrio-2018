@@ -10,3 +10,6 @@
 
 # Terraform
 **/terraform.tfstate*
+
+# vim/nvim
+**/*.swp
