@@ -1,9 +1,13 @@
 ---
 - hosts: all
   become: true
+
   vars:
       # TODO get this from Terraform
       jenkins_hostname: 172.31.20.167
+      java_packages:
+        - openjdk-8-jdk
+
   roles:
     - base
     - geerlingguy.jenkins
