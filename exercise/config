@@ -3,7 +3,7 @@
 Host admin-pub
   Hostname 34.228.29.192
   User ubuntu
-  IdentityFile /Users/tim.condit/PhilipJFry/cloud-storage/Dropbox/jobs/20180819-Liatrio/technical-exercise/liatrio-us-east-1.pem
+#  IdentityFile /Users/timc/.ssh/liatrio-us-east-1.pem
 
 Host admin
   Hostname 172.31.20.167
