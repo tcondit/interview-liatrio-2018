@@ -6,7 +6,7 @@ resource "aws_instance" "base" {
   ami           = "${lookup(var.ami, var.region)}"
   key_name      = "${lookup(var.key_name, var.region)}"
   subnet_id     = "${lookup(var.subnet_id, var.region)}"
-  instance_type = "${var.instance_type}"
+  instance_type = "t2.medium"
   count         = "${var.count}"
 
   vpc_security_group_ids      = "${split("|", lookup(var.vpc_security_group_ids, var.region))}"

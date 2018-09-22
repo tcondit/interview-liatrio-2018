@@ -16,6 +16,9 @@
 - name: Install git
   apt: pkg=git state=present
 
+- name: Install maven
+  apt: pkg=maven state=present
+
 - name: Install neovim
   apt: pkg=neovim state=present
 

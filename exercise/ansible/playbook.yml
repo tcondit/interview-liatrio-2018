@@ -2,10 +2,16 @@
 - hosts: all
   become: true
 
-  # TODO fix this
-  #  vars:
-  #    jenkins_admin_password: "fubar"
-  #    nexus_admin_password: "fubar"
+  vars:
+    jenkins_plugins: [
+      'build-pipeline-plugin',
+      'git-client',
+      'git',
+      'github',
+      'greenballs',
+      'nexus-jenkins-plugin',
+      #      'pipeline-plugin'
+    ]
 
     #jenkins_admin_password:  {{ lookup('env', 'JENKINS_ADMIN_PASSWORD') }}
     #nexus_admin_password:  {{ lookup('env', 'NEXUS_ADMIN_PASSWORD') }}

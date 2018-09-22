@@ -28,6 +28,7 @@ A clean slate on which to drop everything I think, imagine, ask about, do or wha
 * **SHORTCUT**
 * **I-DONE-THAT** (shell alias _ + idone)
 * **QUESTION** - for the interview team at Liatrio
+* **IMPROVEMENTS** - things I'd like to improve
 
 * [ ] **TODO** store configuration code (Packer, TF, Ansible) together or separate? Name conventions?
 
@@ -175,7 +176,7 @@ A clean slate on which to drop everything I think, imagine, ask about, do or wha
 * key I created earlier (`liatrio-tech-exercise.pem`) has two flaws
   * the name is too generic and it's in the "wrong" region
   * I created it in `us-west-2`, but am now working in `us-east-1` per `example.json` (oops)
-  * [ ] **TODO** delete the key in `us-west-2`, recreate in `us-east-1` with a proper name
+  * [x] **TODO** delete the key in `us-west-2`, recreate in `us-east-1` with a proper name
     * call it `liatrio-us-east-1.pem`
 
 * **I-DONE-THAT** added `./config` with per-host configuration
@@ -536,4 +537,93 @@ I'll need to figure out how to write this into a playbook, but for now here's th
     ```
 
 * [ ] **TODO** figure out how to use `StrictHostKeyChecking no` in Ansible
+
+* new `admin` instance
+  * wonky workaround for SSH issue
+
+    ```bash
+    ubuntu@ip-172-31-20-167:~/interview-liatrio-2018/exercise/ansible$ file ~/.ssh/liatrio-us-east-1.pem
+    /home/ubuntu/.ssh/liatrio-us-east-1.pem: PEM RSA private key
+
+    ubuntu@ip-172-31-20-167:~/interview-liatrio-2018/exercise/ansible$ ln ~/.ssh/liatrio-us-east-1.pem ~/.ssh/id_rsa
+    ```
+
+## 20180910 Mon
+
+* **IMPROVEMENTS** Ansible and Terraform config sources in their own repos
+* **IMPROVEMENTS** find a better way to use direnv
+
+## 20180911 Tue
+
+* Jenkins + Maven + PetClinic today
+* still "shaving" away at it
+
+Some things to note/do
+* letsencrypt! Need some of that sweet sweet cert goodness
+* would love to get the Jenkins CLI working so I can collect the list of installed plugins
+  * may skip it
+* the instance where Jenkins is running right now - `admin`, public IP 34.228.29.192 - is not long for this world
+  * it's a good test bed though ; got a couple little pipeline jobs running there now
+  * username and password in Quiver
+
+* GitHub personal access token
+  * name: jenkins-commit-hooks
+  * token: 46967c902bc756864de71d8f39c40e208e9eebbe
+  * permissions
+    * repo repo:status
+    * repo public\_repo
+    * notifications
+  * I hope that's enough permission ; I could have opened it up and saved a debug variable
+
+## 20180912 Wed
+
+* Personal note:
+  * Today has been hell. I've finally had enough and quit a few days earlier than I was planning. My ability to concentrate is not good right now, but I've got to get back on track. That worst case scenario (Nortek) is in the rear view mirror now.
+
+## 20180913 Thu
+
+* yesterday just sucked ; today I stayed home from work
+* 11b7b6b1a090bd031581b24ed11eb2ff45b1fef3
+
+* Nexus creds
+  * username: admin
+  * password: in Dashlane (browser or secure notes)
+
+* from `Jenkins` > `Pipeline Syntax` > `nexusPublisher`
+  * `nexusPublisher nexusInstanceId: 'nexus-52-2-239-123', nexusRepositoryId: 'Liatrio-Exercise-SNAPSHOTS', packages: []`
+
+## 20180914 Fri
+
+* not much accomplished today, aside from a quick call with Christine this morning before going to work (and work was wacky)
+* flew to SFO
+
+## 20180915 Sat
+
+* at Dehart's
+* working on `webhook`, cleaning up `scm` in `Jenkinsfile`
+  * need to whitelist these subnets from `GitHub`
+    * 192.30.252.0/22, 185.199.108.0/22, 140.82.112.0/20
+  * HTTP 200! (it was the whitelist in the library with the revolver)
+* [ ] **TODO** add Jenkins job to push release to GitHub
+* [ ] **TODO** add `master` to Jenkinsfile
+
+* from `Jenkins` > `Manage Jenkins` > `System Log` > `All Jenkins Logs`
+
+    ```bash
+    Sep 16, 2018 2:12:06 AM WARNING org.codehaus.groovy.runtime.callsite.PojoMetaMethodSite$PojoCachedMethodSiteNoUnwrap invoke
+    Unsuccessful request to http://localhost:8081 for version information for compatibility check
+    java.io.IOException: Server returned HTTP response code: 403 for URL: http://localhost:8081/service/rest/wonderland/status
+    ```
+
+### Demo prep
+
+* or at least brainstorming a possible flow
+* Packer, TF, Ansible: all command line
+* release to GitHub - separate `release` branch?
+* tear down the environment - `thing` script?
+
+## 20180918 Tue
+
+* At DevOps World / Jenkins World
+* presentation scheduled for Tuesday 9/25 @ 11am (1 hr)
 
