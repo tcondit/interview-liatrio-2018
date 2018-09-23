@@ -1,10 +1,10 @@
 key_name = {
-  us-east-1 = "liatrio-us-east-1a"
+  us-east-1 = "liatrio-us-east-1"
 }
 
-ami = {
-  us-east-1 = "ami-00470c36853630d0c"
-}
+#ami = {
+#  us-east-1 = "ami-02880676b33ba4630"
+#}
 
 count = 1
 

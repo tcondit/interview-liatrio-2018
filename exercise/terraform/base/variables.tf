@@ -7,7 +7,7 @@ variable "ami" {
   description = "ID of the AMI to create the instance"
 
   default = {
-    "us-east-1" = ""
+    "us-east-1" = "ami-02880676b33ba4630"
     "us-west-1" = ""
     "us-west-2" = ""
   }
@@ -17,7 +17,7 @@ variable "key_name" {
   description = "ID of the private key used to access the instance"
 
   default = {
-    us-east-1 = "liatrio-us-east-1a"
+    us-east-1 = "liatrio-us-east-1"
     us-west-1 = ""
     us-west-2 = ""
   }
@@ -47,7 +47,7 @@ variable "vpc_security_group_ids" {
   description = "A map of strings of security group IDs associated with the EC2 instance"
 
   default = {
-    us-east-1 = "sg-040353d06f4ec9ab6|sg-0fecfa0f7b34dda61|sg-f3bbdf8c"
+    us-east-1 = "sg-040353d06f4ec9ab6|sg-0fecfa0f7b34dda61|sg-f3bbdf8c|sg-0b94417daea7f7ec0"
     us-west-1 = ""
     us-west-2 = ""
   }
@@ -100,3 +100,4 @@ variable "tags" {
 #  type        = "map"
 #  default     = {}
 #}
+
