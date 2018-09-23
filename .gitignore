@@ -1,6 +1,10 @@
-# Ansible
+# ansible
 **/*.retry
 **/ansible.log
+
+## roles
+**/ansible-thoteam.nexus3-oss/
+**/geerlingguy.jenkins/
 
 # direnv
 **/.envrc
@@ -11,7 +15,7 @@
 # SSH
 **/*.pem
 
-# Terraform
+# terraform
 **/terraform.tfstate*
 
 # vim/nvim
