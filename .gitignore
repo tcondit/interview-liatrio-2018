@@ -4,6 +4,7 @@
 
 ## roles
 **/ansible-thoteam.nexus3-oss/
+**/geerlingguy.java/
 **/geerlingguy.jenkins/
 
 # direnv
@@ -17,6 +18,7 @@
 
 # terraform
 **/terraform.tfstate*
+**/.terraform/
 
 # vim/nvim
 **/*.swp
