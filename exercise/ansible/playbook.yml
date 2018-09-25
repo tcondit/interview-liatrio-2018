@@ -4,13 +4,35 @@
 
   vars:
     jenkins_plugins: [
+      # suggested plugins
+      # https://github.com/karlmdavis/ansible-role-jenkins2/blob/master/defaults/main.yml#L43
+      'ant',
+      'antisamy-markup-formatter',
+      'build-timeout',
+      'cloudbees-folder',
+      'credentials-binding',
+      'email-ext',
+      'git',
+      'github-branch-source',
+      'gradle',
+      'ldap',
+      'mailer',
+      'matrix-auth',
+      'pam-auth',
+      'pipeline-github-lib',
+      'pipeline-stage-view',
+      'ssh-slaves',
+      'subversion',
+      'timestamper',
+      'workflow-aggregator',
+      'ws-cleanup',
+
+      # others that we need
       'build-pipeline-plugin',
       'git-client',
-      'git',
       'github',
       'greenballs',
       'nexus-jenkins-plugin',
-      #      'pipeline-plugin'
     ]
 
     #jenkins_admin_password:  {{ lookup('env', 'JENKINS_ADMIN_PASSWORD') }}
