@@ -39,7 +39,7 @@
     {
       "type": "shell",
       "inline": [
-        "sleep 10",                     // <https://github.com/hashicorp/packer/issues/2143>
+        "sleep 10",                     // <https://github.com/hashicorp/packer/issues/2143#issuecomment-106956045>
         "sudo apt-get update",
         "sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq",
         "sudo apt-get install -y python"
